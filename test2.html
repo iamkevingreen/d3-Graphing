@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bar Chart Example</title>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	
+	<style>
+		.bar.apples { fill: green; }
+		.bar.oranges { fill: orange; }
+		.bar.bananas { fill: yellow; }
+		.bar.plums { fill: purple; }
+	</style>
+
+</head>
+<body>
+	<div id="chart"></div>
+</body>
+
+	<script type="text/javascript">
+
+		d3.json("data.json", function(data) {
+			var canvas = d3.select("#chart").append("svg")
+				.attr("width", 300)
+				.attr("height", 150)
+
+				canvas.selectAll("rect")
+					.data(data)
+					.enter()
+						.append("rect")
+						.attr("width", function(d) { return d.age * 10; })
+						.attr("height", 50)
+						.attr("y" function(d, i) { return i * 50; })
+						.attr("fill", "blue");
+
+				
+		});
+	</script>
+</html>
